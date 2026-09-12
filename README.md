@@ -1,10 +1,10 @@
 # shiftbase-web
 
 Papan roster untuk shiftbase API — Vite + React + TS + Tailwind v4 + shadcn.
+Desain: terang, bidang datar, lajur waktu sebagai elemen khas (tanpa gradien,
+tanpa kartu-shadow, tanpa emoji).
 
-> Status: W1 — Login + Jadwal (lajur waktu). Shift, Absensi, Laporan di W2.
-
-## Dev
+## Dev 5 menit
 
 ```bash
 npm install
@@ -12,11 +12,26 @@ cp .env.example .env            # VITE_API_URL=http://localhost:8080
 npm run dev                     # :5173
 ```
 
-Butuh API + DB repo 1 (`RakhaYandra/shiftbase`) jalan + `FRONTEND_URL=http://localhost:5173`.
-Login seed: `admin@shiftbase.local / Admin123!`.
+Butuh repo 1 (`RakhaYandra/shiftbase`): API + MySQL + seed jalan, dengan
+`FRONTEND_URL=http://localhost:5173`.
+Login seed: `admin@shiftbase.local / Admin123!`,
+`manager@shiftbase.local / Manager123!`, `staff@shiftbase.local / Staff123!`.
 
-## Cek
+## Halaman & peran
+
+| Halaman | admin | manager | staff |
+|---|---|---|---|
+| Jadwal (lajur waktu) | ✅ | ✅ | ✅ miliknya |
+| Shift (CRUD, bentrok→pesan jelas) | ✅ | ✅ | ❌ |
+| Absensi (catat + riwayat + impor CSV) | ✅ | ✅ | ✅ miliknya |
+| Laporan (lembur + cakupan) | ✅ | ✅ | ❌ |
+
+Token JWT di `localStorage` (`shiftbase_token`); 401 → keluar otomatis.
+
+## Cek & CI
 
 ```bash
-npx tsc -b && npm run build
+npx tsc -b && npm run lint && npm run build
 ```
+
+CI: Node 22 → `npm ci` → tsc → oxlint → build.

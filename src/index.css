@@ -1,0 +1,25 @@
+@import "@fontsource/archivo/500.css";
+@import "@fontsource/archivo/700.css";
+@import "@fontsource/archivo/800.css";
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #edf0eb;
+  --color-ink: #1a2420;
+  --color-board: #1e4d3b;
+  --color-board-deep: #143627;
+  --color-signal: #e8a013;
+  --color-signal-deep: #8a5f06;
+  --color-line: #d3dad3;
+  --font-display: "Archivo", "system-ui", sans-serif;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: "Archivo", system-ui, sans-serif;
+}
+
+.tnum {
+  font-feature-settings: "tnum" 1;
+}

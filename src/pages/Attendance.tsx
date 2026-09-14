@@ -68,6 +68,9 @@ export function Attendance() {
     setImp(null);
     try {
       setImp(await importCSV(token, file));
+      if (!isStaff) {
+        api.employees(token).then(setEmps).catch(() => setEmps([]));
+      }
     } catch (e) {
       setErr((e as Error).message);
     }
